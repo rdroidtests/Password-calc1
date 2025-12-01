@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Password calculator</title>
+  </head>
+  <body>
+    <label for="origem">Timer Total:</label>
+    <input type="text" id="origem" name="origem" maxlength="4">
+    <label for="destino">Result:</label>
+    <input type="text" id="destino" name="destino" maxlength="12">
+    <button onclick="copiarTexto()">Calc</button>
+    
+    <script>
+      function copiarTexto() {
+          var caixaOrigem = document.getElementById("origem");
+          var caixaDestino = document.getElementById("destino");
+          var decimalNumber = parseInt(caixaOrigem.value);
+          var hexString = decimalNumber.toString(16);
+          if (hexString.length == 4) {
+              var sum = parseInt(hexString[0], 16);
+              sum += parseInt(hexString[1], 16);
+              sum += parseInt(hexString[2], 16);
+              sum += parseInt(hexString[3], 16);
+              hexString = sum.toString(16);
+              if (hexString.length == 2) {
+                  decimalNumber = parseInt(hexString[1], 16);
+                  decimalNumber += 16;
+                  caixaDestino.value = decimalNumber.toString();
+              }
+              
+          }
+      }
+    </script>
+  </body>
+</html>
